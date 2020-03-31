@@ -1,0 +1,32 @@
+
+#Generate Covariates
+bath <- sample(1:4, 1000, TRUE)
+bed <- sample(1:4, 1000, TRUE)
+other_rooms <- sample(1:4, 1000, TRUE)
+house_age <- sample(1:100, 1000, TRUE)
+total_rooms <- bath+bed+other_rooms
+
+#List of Covariates
+X <- data.table(bath, bed, other_rooms, house_age, total_rooms)
+
+#Generate Error Terms
+
+#generate truncated normal draws with specified correlation
+#the a term allows us to control correlation of errors
+#a <- 0.5
+#sigma <- matrix(c(sum(bath, bed),a,a,sum(bath, bed)),2,2)
+#errors <- rtmvnorm(n=1000, mean=c(0,0), sigma, lower=c(0,0), upper=c(Inf, Inf))
+
+#eps_r <- errors[,1]
+#eps_b <- errors[,2]
+
+#eps_r <- rtruncnorm(1000, a=0, b=10, mean = 0, sd = X$total_rooms)
+#eps_b <- rtruncnorm(1000, a=-10, b=0, mean = 0, sd = X$total_rooms)
+
+eps <- rnorm(1000, 0, 10*X$total_rooms)
+
+#generate reservation prices
+P_r <- (1000*X$bath + 1000*X$bed + 1000*X$other_rooms + 1000*sqrt(X$house_age)) + eps
+
+#generate buying prices
+P_b <- (1000*X$bath + 1000*X$bed + 1000*X$other_rooms + 1000*sqrt(X$house_age)) + eps

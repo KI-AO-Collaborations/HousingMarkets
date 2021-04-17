@@ -1,4 +1,4 @@
-import numpy as np 
+import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 import scipy.optimize as opt
@@ -17,7 +17,7 @@ def V(p_L, X):
 
 
 def lambda_fn(p_L, X, alpha, gamma, epsilon, c):
-    return ( alpha / np.exp( V(p_L, X) ) - c ) ** ( 1 / (1 + gamma) ) 
+    return ( alpha / np.exp( V(p_L, X) ) - c ) ** ( 1 / (1 + gamma) )
 
 
 def integrand_price(d, p_L, X, alpha, gamma, epsilon, c):
@@ -41,12 +41,12 @@ for s in range(1, 4):
         for ba in range(1,3):
             for be in range(1,3):
                 X_matrix_s.append([ba,be,s])
-                
+
     if s == 2:
         for ba in range(2,4):
             for be in range(2,4):
                 X_matrix_m.append([ba,be,s])
-                
+
     if s == 3:
         for ba in range(3,5):
             for be in range(3,5):
@@ -62,10 +62,10 @@ for i in range(len(X_matrix_s)):
     for p in p_L:
         prices.append(price_int(p, X, alpha, gamma, eta, epsilon, c))
     plt.plot(p_L, 10 + np.array(prices), color=colors[i], label=r'X={}'.format(X))
-    
+
     max_price = p_L[np.argmax(prices)]
     plt.axvline(x=max_price, color=colors[i], linestyle='--')
-    
+
     plt.xlabel('Listing Price ($p^L$)')
     plt.ylabel('Selling Price ($p$)')
     plt.yticks([])
@@ -84,10 +84,10 @@ for i in range(len(X_matrix_m)):
     for p in p_L:
         prices.append(price_int(p, X, alpha, gamma, eta, epsilon, c))
     plt.plot(p_L, 10 * np.array(prices), color=colors[i], label=r'X={}'.format(X))
-    
+
     max_price = p_L[np.argmax(prices)]
     plt.axvline(x=max_price, color=colors[i], linestyle='--')
-    
+
     plt.xlabel('Listing Price ($p^L$)')
     plt.ylabel('Selling Price ($p$)')
     plt.yticks([])
@@ -106,10 +106,10 @@ for i in range(len(X_matrix_l)):
     for p in p_L:
         prices.append(price_int(p, X, alpha, gamma, eta, epsilon, c))
     plt.plot(p_L, 10 * np.array(prices), color=colors[i], label=r'X={}'.format(X))
-    
+
     max_price = p_L[np.argmax(prices)]
     plt.axvline(x=max_price, color=colors[i], linestyle='--')
-    
+
     plt.xlabel('Listing Price ($p^L$)')
     plt.ylabel('Selling Price ($p$)')
     plt.yticks([])
@@ -130,10 +130,10 @@ for i in range(len(alphas)):
     for p in p_L:
         prices.append(price_int(p, X, alpha, gamma, eta, epsilon, c))
     plt.plot(p_L, 10 * np.array(prices), label=r'$\alpha$={}'.format(alpha))
-    
+
     max_price = p_L[np.argmax(prices)]
     plt.axvline(x=max_price, color=colors[i], linestyle='--')
-    
+
     plt.xlabel('Listing Price ($p^L$)')
     plt.ylabel('Selling Price ($p$)')
     plt.yticks([])
@@ -154,10 +154,10 @@ for i in range(len(gammas)):
     for p in p_L:
         prices.append(price_int(p, X, alpha, gamma, eta, epsilon, c))
     plt.plot(p_L, 10 * np.array(prices), color=colors[i], label=r'$\gamma$={}'.format(gamma))
-    
+
     max_price = p_L[np.argmax(prices)]
-    plt.axvline(x=max_price, color=colors[i], linestyle='--')    
-    
+    plt.axvline(x=max_price, color=colors[i], linestyle='--')
+
     plt.xlabel('Listing Price ($p^L$)')
     plt.ylabel('Selling Price ($p$)')
     plt.yticks([])
@@ -178,10 +178,10 @@ for i in range(len(etas)):
     for p in p_L:
         prices.append(price_int(p, X, alpha, gamma, eta, epsilon, c))
     plt.plot(p_L, 10 * np.array(prices), color=colors[i], label=r'$\eta$={}'.format(eta))
-    
+
     max_price = p_L[np.argmax(prices)]
-    plt.axvline(x=max_price, color=colors[i], linestyle='--')  
-    
+    plt.axvline(x=max_price, color=colors[i], linestyle='--')
+
     plt.xlabel('Listing Price ($p^L$)')
     plt.ylabel('Selling Price ($p$)')
     plt.yticks([])
@@ -202,10 +202,10 @@ for i in range(len(epsilons)):
     for p in p_L:
         prices.append(price_int(p, X, alpha, gamma, eta, epsilon, c))
     plt.plot(p_L, 10 * np.array(prices), color=colors[i], label=r'$\epsilon$={}'.format(epsilon))
-    
+
     max_price = p_L[np.argmax(prices)]
-    plt.axvline(x=max_price, color=colors[i], linestyle='--')     
-    
+    plt.axvline(x=max_price, color=colors[i], linestyle='--')
+
     plt.xlabel('Listing Price ($p^L$)')
     plt.ylabel('Selling Price ($p$)')
     plt.yticks([])
@@ -230,6 +230,3 @@ for c in np.linspace(1, 5, 5):
     plt.tight_layout()
     plt.savefig('Output/c.png')
     plt.close()
-
-
-

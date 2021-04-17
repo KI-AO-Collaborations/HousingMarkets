@@ -71,7 +71,7 @@ for i in range(len(X_matrix_s)):
     plt.yticks([])
     plt.legend(loc='lower left')
     plt.tight_layout()
-    plt.savefig('Output/X_s.png')
+    plt.savefig('../results/X_s.png')
     plt.close()
 
 
@@ -93,7 +93,7 @@ for i in range(len(X_matrix_m)):
     plt.yticks([])
     plt.legend()
     plt.tight_layout()
-    plt.savefig('Output/X_m.png')
+    plt.savefig('../results/X_m.png')
     plt.close()
 
 
@@ -115,7 +115,7 @@ for i in range(len(X_matrix_l)):
     plt.yticks([])
     plt.legend()
     plt.tight_layout()
-    plt.savefig('Output/X_l.png')
+    plt.savefig('../results/X_l.png')
     plt.close()
 
 
@@ -139,7 +139,7 @@ for i in range(len(alphas)):
     plt.yticks([])
     plt.legend()
     plt.tight_layout()
-    plt.savefig('Output/alpha.png')
+    plt.savefig('../results/alpha.png')
     plt.close()
 
 
@@ -163,7 +163,7 @@ for i in range(len(gammas)):
     plt.yticks([])
     plt.legend()
     plt.tight_layout()
-    plt.savefig('Output/gamma.png')
+    plt.savefig('../results/gamma.png')
     plt.close()
 
 
@@ -187,7 +187,7 @@ for i in range(len(etas)):
     plt.yticks([])
     plt.legend()
     plt.tight_layout()
-    plt.savefig('Output/eta.png')
+    plt.savefig('../results/eta.png')
     plt.close()
 
 
@@ -211,7 +211,7 @@ for i in range(len(epsilons)):
     plt.yticks([])
     plt.legend()
     plt.tight_layout()
-    plt.savefig('Output/epsilon.png')
+    plt.savefig('../results/epsilon.png')
     plt.close()
 
 
@@ -228,5 +228,5 @@ for c in np.linspace(1, 5, 5):
     plt.yticks([])
     plt.legend()
     plt.tight_layout()
-    plt.savefig('Output/c.png')
+    plt.savefig('../results/c.png')
     plt.close()
